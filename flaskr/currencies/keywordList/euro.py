@@ -1,0 +1,5 @@
+euroKeywords = [
+    "euro",
+    "euros",
+    "EU$"
+]

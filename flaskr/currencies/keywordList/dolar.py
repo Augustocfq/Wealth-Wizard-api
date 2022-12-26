@@ -1,0 +1,5 @@
+dolarKeywords = [
+    "dolar",
+    "dolares",
+    "U$"
+]

@@ -1,0 +1,5 @@
+realKeywords = [
+    "reais",
+    "real",
+    "R$",
+]

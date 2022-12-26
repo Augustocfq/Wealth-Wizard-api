@@ -1,0 +1,5 @@
+giftsKeywords = [
+    "presente",
+    "aniversario",
+    "casamento"
+]
