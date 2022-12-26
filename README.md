@@ -1,4 +1,4 @@
-# Expense Tracker API
+# Wealth Wizard API
 
 This API allows users to input an expense explanation, such as "I spent 200 euros in shoes today", and receive the category, value, and currency of the expense in return.
 
