@@ -1,0 +1,21 @@
+# Python files
+*.pyc
+__pycache__/
+
+# Flask files
+instance/
+.flaskenv
+
+# spaCy files
+.cache/
+
+# language_tool_python files
+*.languages
+*.aff
+*.dic
+
+# Virtual environment files
+venv/
+.venv/
+env/
+.env/
