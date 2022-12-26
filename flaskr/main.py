@@ -1,9 +1,18 @@
 import spacy
+import language_tool_python as ltp
 
 from categories.list import categoriesList
 from currencies.list import currencyList
 
 nlp = spacy.load("pt_core_news_sm")
+dictionary = ltp.LanguageTool('pt-BR')
+
+def correctSpelling(text: str) -> str:
+    try:
+        correctedText = ltp.correct(text, dictionary)
+    except Exception as e:
+        correctedText = text
+    return correctedText
 
 def classifyExpense(text):
     processedText = nlp(text)
@@ -15,7 +24,7 @@ def classifyExpense(text):
         
     return "Other"
         
-def extractValue(text):
+def extractValue(text: str) -> str:
     processedText = nlp(text)
     value = 0
     
@@ -26,7 +35,7 @@ def extractValue(text):
 
     return value
 
-def specifyCurrency(text):
+def specifyCurrency(text: str) -> str:
     processedText = nlp(text)
     lemmas = [token.lemma_ for token in processedText]
 
@@ -37,10 +46,11 @@ def specifyCurrency(text):
     return "Real"
 
 
-def process(text):
-    category = classifyExpense(text)
-    value = extractValue(text)
-    currency = specifyCurrency(text)
+def process(text: str) -> dict:
+    correctedText = correctSpelling(text)
+    category = classifyExpense(correctedText)
+    value = extractValue(correctedText)
+    currency = specifyCurrency(correctedText) 
     
     expense = {
         "category": category,
