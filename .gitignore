@@ -19,3 +19,6 @@ venv/
 .venv/
 env/
 .env/
+
+# Ignore the api keys module
+keys.py

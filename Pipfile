@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 flask = "*"
 spacy = "*"
+language-tool-python = "*"
 
 [dev-packages]
 

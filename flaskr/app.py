@@ -1,11 +1,15 @@
 from flask import Flask, request
 
+from keys import YAHOO_FINANCE_API_KEY
+from responseModel import responseGenerator
+from api.investmentApi import getInvestmentInfo
+
 from main import process
 
 app = Flask("Wealth Wizard")
 
-@app.route("/processexpense", methods=["POST"])
-def processExpense():
+@app.route("/process-expense", methods=["POST"])
+def processRoute():
     
     body = request.get_json()
     
@@ -25,14 +29,26 @@ def processExpense():
         expense
     )
 
-def responseGenerator(status, message, contentName=False, content=False):
-    response = {}
-    response['status'] = status
-    response['message'] = message
-
-    if contentName and content:
-        response[contentName] = content
+@app.route("/get-investment-info", methods=["POST"])
+def getInvestmentInfoRoute():
+    
+    body = request.get_json()
+    
+    if "ticker" not in body:
         
-    return response
+        return responseGenerator(
+            400,
+            "The ticker parameter MUST be included"
+        )
+        
+    ticker = body["ticker"]
+    
+    return responseGenerator(
+        200,
+        "investmentApi successfully called",
+        "investmentApi response:",
+        getInvestmentInfo(YAHOO_FINANCE_API_KEY, ticker)
+    )
+    
 
 app.run(debug=True)
