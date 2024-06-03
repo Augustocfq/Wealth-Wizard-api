@@ -2,8 +2,6 @@
 
 This API allows users to input an expense explanation, such as "I spent 200 euros in shoes today", and receive the category, value, and currency of the expense in return.
 
-This project was developed as a final project for the SENAI Cimatec course of System Development.
-
 ## Installation
 
 To install the dependencies of the API, run the following command in the root directory of the project:
